@@ -7,7 +7,7 @@ const Footer = () => {
                   <div className='flex flex-col sm:grid grid-cols-[3fr_1fr_1fr] gap-14 my-10 mt-40 text-sm'>
                         <div>
                               <img className='mb-5 w-40' src={assets.logo} alt="" />
-                              <p className='w-full md:w-2/3 text-gray-600 leading-6'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo id magni porro illum, corrupti voluptatibus labore animi maxime dignissimos iure dicta quia cumque voluptas temporibus at voluptatem nulla omnis, aperiam eveniet amet, commodi totam! Debitis dolor fugiat itaque expedita cumque!</p>
+                              <p className='w-full md:w-2/3 text-gray-600 leading-6'>Prescripto is committed to excellence in healthcare technology, we continuously strive to enhance our platform, integrating the latest advancements to improve user experience and deliver superior service. Whether you are booking your appointment or managing ongoing care. Prescripto is here to support you every step of the way.</p>
                         </div>
 
                         <div>
