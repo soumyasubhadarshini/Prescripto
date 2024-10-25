@@ -19,7 +19,7 @@ const MyAppointments = () => {
   const getUserAppointments = async () => {
     try {
 
-      const { data } = await axios.get(backendUrl + '/api/user/appointments', { headers: { token } })
+      const { data } = await axios.get(backendUrl + '/api/user/appointments', { headers: { utoken: token } })
 
       if (data.success) {
         setAppointments(data.appointments.reverse())
@@ -34,7 +34,7 @@ const MyAppointments = () => {
 
   const cancelAppointment = async (appointmentId) => {
     try {
-      const { data } = await axios.get(backendUrl + '/api/user/cancel-appointment', { appointmentId }, { headers: { token } })
+      const { data } = await axios.get(backendUrl + '/api/user/cancel-appointment', { appointmentId }, { headers: { utoken: token } })
 
       if (data.success) {
         toast.success(data.message)

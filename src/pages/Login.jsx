@@ -23,7 +23,8 @@ const Login = () => {
       if (state === 'Sign Up') {
         const { data } = await axios.post(backendUrl + '/api/user/register', { name, password, email })
         if (data.success) {
-          localStorage.setItem('token', data.token)
+          localStorage.setItem('utoken', data.token)
+          setToken(data.token)
         }
         else {
           toast.error(data.message)
@@ -31,7 +32,7 @@ const Login = () => {
       } else {
         const { data } = await axios.post(backendUrl + '/api/user/login', { password, email })
         if (data.success) {
-          localStorage.setItem('token', data.token)
+          localStorage.setItem('utoken', data.token)
         }
         else {
           toast.error(data.message)
