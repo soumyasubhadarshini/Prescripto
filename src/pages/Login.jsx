@@ -33,6 +33,8 @@ const Login = () => {
         const { data } = await axios.post(backendUrl + '/api/user/login', { password, email })
         if (data.success) {
           localStorage.setItem('utoken', data.token)
+           setToken(data.token); // This updates token state and triggers a re-render
+      navigate('/');
         }
         else {
           toast.error(data.message)
@@ -43,11 +45,11 @@ const Login = () => {
     }
   }
 
-  useEffect(()=> {
-    if(token) {
-      navigate('/')
+  useEffect(() => {
+    if (token) {
+      navigate('/');
     }
-  },[token])
+  }, [token, navigate]);
 
   return (
     <form onSubmit={onSubmitHandler} className='min-h-[80vh] flex items-center'>

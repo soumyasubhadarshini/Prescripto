@@ -1,53 +1,53 @@
-import React, { useContext, useState } from 'react'
-import { assets } from '../assets/assets'
-import { AppContext } from '../context/AppContext'
-import axios from 'axios'
+import React, { useContext, useState } from 'react';
+import { assets } from '../assets/assets';
+import { AppContext } from '../context/AppContext';
+import axios from 'axios';
+import { toast } from 'react-toastify';
 
 const MyProfile = () => {
-
-  const { userData, setUserData, token, backendUrl, loadUserProfileData } = useContext(AppContext)
-
-  const [isEdit, setIsEdit] = useState(false)
-  const [image, setImage] = useState(false)
+  const { userData, setUserData, token, backendUrl, loadUserProfileData } = useContext(AppContext);
+  const [isEdit, setIsEdit] = useState(false);
+  const [image, setImage] = useState(null);
 
   const updateUserProfileData = async () => {
     try {
-      const formData = new FormData()
+      const formData = new FormData();
+      formData.append('name', userData.name);
+      formData.append('phone', userData.phone);
+      formData.append('address', JSON.stringify(userData.address));
+      formData.append('gender', userData.gender);
+      formData.append('dob', userData.dob);
+      if (image) formData.append('image', image); // Check if an image is selected
 
-      formData.append('name', userData.name)
-      formData.append('phone', userData.phone)
-      formData.append('address', userData.JSON.stringyfy(userData.address))
-      formData.append('gender', userData.gender)
-      formData.append('dob', userData.dob)
-      image && formData.append('image', image)
-
-      const { data } = await axios.post(backendUrl + '/api/user/update-profile', formData, { headers: { utoken: token } })
+      const { data } = await axios.post(`${backendUrl}/api/user/update-profile`, formData, {
+        headers: { utoken: token }
+      });
 
       if (data.success) {
-        toast.success(data.message)
-        await loadUserProfileData()
-        setIsEdit(false)
-        setImage(false)
+        toast.success(data.message); // Display success message
+        await loadUserProfileData(); // Reload user profile data
+        setIsEdit(false); // Set edit mode to false
+        setImage(null); // Reset the image state
       } else {
-        toast.error(data.message)
+        toast.error(data.message); // Display error message
       }
     } catch (error) {
-      toast.error(error.message)
+      console.log(error);
+      toast.error(error.message); // Handle any errors
     }
-  }
+  };
 
   return userData && (
     <div className='max-w-lg flex flex-col gap-2 text-sm'>
       {
         isEdit
-          ?
-          <label htmlFor="image">
-            <div className='inline-block relative cursor-pointer'>
-              <img className='w-36 rounded opacity-75' src={image ? URL.createObjectURL(image) : userData.image} alt="" />
-              <img className='w-10 absolute bottom-12 right-12' src={image ? '' : assets.upload_icon} alt="" />
-            </div>
-            <input onChange={(e) => setImage(e.target.files[0])} type="file" id="image" hidden />
-          </label>
+          ? <label htmlFor="image">
+              <div className='inline-block relative cursor-pointer'>
+                <img className='w-36 rounded opacity-75' src={image ? URL.createObjectURL(image) : userData.image} alt="" />
+                <img className='w-10 absolute bottom-12 right-12' src={image ? '' : assets.upload_icon} alt="" />
+              </div>
+              <input onChange={(e) => setImage(e.target.files[0])} type="file" id="image" hidden />
+            </label>
           : <img className='w-36 rounded' src={userData.image} alt="" />
       }
       {
@@ -68,7 +68,6 @@ const MyProfile = () => {
               ? <input className='bg-gray-100 max-w-52' type="text" value={userData.phone} onChange={e => setUserData(prev => ({ ...prev, phone: e.target.value }))} />
               : <p className='text-blue-400'>{userData.phone}</p>
           }
-
           <p className='font-medium'>Address:</p>
           {
             isEdit
@@ -83,7 +82,6 @@ const MyProfile = () => {
                 {userData.address.line2}
               </p>
           }
-
         </div>
       </div>
 
@@ -116,7 +114,7 @@ const MyProfile = () => {
         }
       </div>
     </div>
-  )
+  );
 }
 
-export default MyProfile
+export default MyProfile;
