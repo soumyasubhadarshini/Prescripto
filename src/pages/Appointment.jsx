@@ -116,7 +116,6 @@ const Appointment = () => {
     console.log('Selected Slot:', slotTime);
   }, [docSlots, slotTime]);
 
-
   return docInfo && (
     <div>
       <div className='flex flex-col sm:flex-row gap-4'>

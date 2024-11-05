@@ -1,53 +1,52 @@
-import React, { useContext, useState } from 'react';
-import { assets } from '../assets/assets';
-import { AppContext } from '../context/AppContext';
-import axios from 'axios';
-import { toast } from 'react-toastify';
+import React, { useContext, useState } from 'react'
+import { assets } from '../assets/assets'
+import { AppContext } from '../context/AppContext'
+import axios from 'axios'
+import { toast } from 'react-toastify'
 
 const MyProfile = () => {
-  const { userData, setUserData, token, backendUrl, loadUserProfileData } = useContext(AppContext);
-  const [isEdit, setIsEdit] = useState(false);
-  const [image, setImage] = useState(null);
+  const { userData, setUserData, token, backendUrl, loadUserProfileData } = useContext(AppContext)
+  const [isEdit, setIsEdit] = useState(false)
+  const [image, setImage] = useState(null)
 
   const updateUserProfileData = async () => {
     try {
-      const formData = new FormData();
-      formData.append('name', userData.name);
-      formData.append('phone', userData.phone);
-      formData.append('address', JSON.stringify(userData.address));
-      formData.append('gender', userData.gender);
-      formData.append('dob', userData.dob);
-      if (image) formData.append('image', image); // Check if an image is selected
+      const formData = new FormData()
+      formData.append('name', userData.name)
+      formData.append('phone', userData.phone)
+      formData.append('address', JSON.stringify(userData.address))
+      formData.append('gender', userData.gender)
+      formData.append('dob', userData.dob)
+      if (image) formData.append('image', image)
 
       const { data } = await axios.post(`${backendUrl}/api/user/update-profile`, formData, {
         headers: { utoken: token }
-      });
-
+      })
       if (data.success) {
-        toast.success(data.message); // Display success message
-        await loadUserProfileData(); // Reload user profile data
-        setIsEdit(false); // Set edit mode to false
-        setImage(null); // Reset the image state
+        toast.success(data.message)
+        await loadUserProfileData()
+        setIsEdit(false)
+        setImage(null)
       } else {
-        toast.error(data.message); // Display error message
+        toast.error(data.message)
       }
     } catch (error) {
-      console.log(error);
-      toast.error(error.message); // Handle any errors
+      console.log(error)
+      toast.error(error.message)
     }
-  };
+  }
 
   return userData && (
     <div className='max-w-lg flex flex-col gap-2 text-sm'>
       {
         isEdit
           ? <label htmlFor="image">
-              <div className='inline-block relative cursor-pointer'>
-                <img className='w-36 rounded opacity-75' src={image ? URL.createObjectURL(image) : userData.image} alt="" />
-                <img className='w-10 absolute bottom-12 right-12' src={image ? '' : assets.upload_icon} alt="" />
-              </div>
-              <input onChange={(e) => setImage(e.target.files[0])} type="file" id="image" hidden />
-            </label>
+            <div className='inline-block relative cursor-pointer'>
+              <img className='w-36 rounded opacity-75' src={image ? URL.createObjectURL(image) : userData.image} alt="" />
+              <img className='w-10 absolute bottom-12 right-12' src={image ? '' : assets.upload_icon} alt="" />
+            </div>
+            <input onChange={(e) => setImage(e.target.files[0])} type="file" id="image" hidden />
+          </label>
           : <img className='w-36 rounded' src={userData.image} alt="" />
       }
       {
