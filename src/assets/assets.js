@@ -116,7 +116,7 @@ export const doctors = [
     },
     {
         _id: 'doc3',
-        name: 'Dr. Sarah Patel',
+        name: 'Eva Mitchel',
         image: doc3,
         speciality: 'Dermatologist',
         degree: 'MBBS',
@@ -200,7 +200,7 @@ export const doctors = [
     },
     {
         _id: 'doc9',
-        name: 'Dr. Ava Mitchell',
+        name: 'Dr. Sarah Patel',
         image: doc9,
         speciality: 'Dermatologist',
         degree: 'MBBS',
