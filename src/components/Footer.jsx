@@ -10,7 +10,7 @@ const Footer = () => {
                   <div className='flex flex-col sm:grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr_1fr] gap-10 my-10 text-sm'>
                         <div>
                               <img className='mb-5 w-40 mx-auto sm:mx-0' src={assets.logo} alt="" />
-                              <p className='w-full md:w-2/3 mx-auto text-gray-600 leading-6 text-center sm:text-left'>
+                              <p className='w-full md:w-2/3 mx-auto text-gray-600 leading-6 sm:text-left'>
                                     Prescripto is committed to excellence in healthcare technology, we continuously strive to enhance our platform, integrating the latest advancements to improve user experience and deliver superior service. Whether you are booking your appointment or managing ongoing care, Prescripto is here to support you every step of the way.
                               </p>
                         </div>
@@ -54,7 +54,7 @@ const Footer = () => {
                         <div>
                               <p className='text-xl font-medium mb-5'>Follow Me</p>
                               <ul className='flex flex-col gap-2 text-gray-600 cursor-pointer'>
-                                    <li className="flex gap-2 justify-center sm:justify-start">
+                                    <li className="flex gap-2 justify-start">
                                           <a href="https://github.com/itxnargis" title="Connect to Github" aria-label="Github icon" className="text-gray-600 hover:text-black">
                                                 <AiFillGithub size={20} />
                                           </a>
