@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 import express from 'express'
 import cors from 'cors'
 import 'dotenv/config'
@@ -9,6 +8,7 @@ import doctorRouter from './routes/doctorRoutes.js'
 import userRouter from './routes/userRoute.js'
 
 const app = express()
+// eslint-disable-next-line no-undef
 const port = process.env.PORT || 4000
 connectDB()
 connectCloudinary()
