@@ -37,6 +37,7 @@ const loginDoctor = async (req, res) => {
             const isMatch = await bcrypt.compare(password, doctor.password)
 
             if (isMatch) {
+                  // eslint-disable-next-line no-undef
                   const token = jwt.sign({ id: doctor._id }, process.env.JWT_SECRET)
                   res.json({ success: true, token })
             } else {

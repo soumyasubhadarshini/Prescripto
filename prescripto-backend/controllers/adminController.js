@@ -61,8 +61,10 @@ const loginAdmin = async (req, res) => {
       try {
             const { email, password } = req.body;
 
+            // eslint-disable-next-line no-undef
             if (email === process.env.ADMIN_EMAIL && password === process.env.ADMIN_PASSWORD) {
 
+                  // eslint-disable-next-line no-undef
                   const token = jwt.sign({ email }, process.env.JWT_SECRET)
                   res.json({ success: true, token })
             } else {

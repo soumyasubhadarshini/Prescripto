@@ -7,6 +7,7 @@ const authAdmin = async (req, res, next) => {
             return res.status(403).json({ success: false, message: "Not Authorized. Login Again" });
         }
 
+        // eslint-disable-next-line no-undef
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
         req.user = decoded;
 
