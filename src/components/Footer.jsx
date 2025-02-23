@@ -32,7 +32,7 @@ const Footer = () => {
                                     <li className="flex items-center gap-2">
                                           <IoMailOutline className="text-gray-600 hover:text-black" size={20} />
                                           <a href="mailto:itxnargiskhatun@gmail.com" title="My Gmail account" aria-label="Gmail icon" className="text-gray-900 hover:text-black">
-                                                itxnargiskhatun@gmail.com
+                                          soumyasubhadarshini0@gmail.com
                                           </a>
                                     </li>
                                     <li className="flex items-center gap-2">
@@ -61,7 +61,7 @@ const Footer = () => {
                                           <a href="" title="My personal Twitter account" aria-label="Twitter icon" className="text-gray-600 hover:text-black">
                                                 <AiOutlineTwitter size={20} />
                                           </a>
-                                          <a href="" title="My LinkedIn account" aria-label="LinkedIn icon" className="text-gray-600 hover:text-black">
+                                          <a href="https://www.linkedin.com/in/soumya-subhadarshini-dora-3a2811317/" title="My LinkedIn account" aria-label="LinkedIn icon" className="text-gray-600 hover:text-black">
                                                 <AiFillLinkedin size={20} />
                                           </a>
                                     </li>

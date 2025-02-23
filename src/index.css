@@ -7,16 +7,17 @@
       font-family: Outfit;
 }
 
-.active hr{
-      @apply block
+.active hr {
+      display: block;
 }
 
 ::-webkit-scrollbar {
-      @apply hidden
+      display: none;
 }
 
 @media (max-width: 740px) {
-      .active p{
-            @apply text-white bg-primary
+      .active p {
+            color: white;
+            background-color: #5f6fff;
       }
 }
