@@ -1,8 +1,9 @@
+// eslint-disable-next-line no-unused-vars
 import React from 'react'
 import { assets } from '../assets/assets'
 import { NavLink } from 'react-router-dom'
 import { AiFillGithub, AiOutlineTwitter, AiFillLinkedin, AiOutlineProfile } from 'react-icons/ai';
-import { IoLocationOutline, IoMailOutline } from 'react-icons/io5';
+import { IoMailOutline } from 'react-icons/io5';
 
 const Footer = () => {
       return (
